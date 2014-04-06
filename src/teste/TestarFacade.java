@@ -1,21 +1,25 @@
 package teste;
 
-import model.Itinerario;
-import facade.Facade;
+import org.json.JSONException;
 
+import facade.Facade;
+import static spark.Spark.*;
 public class TestarFacade {
 
 	public static void main(String[] args) {
+		setPort(8000);
 		Facade facade = new Facade();
 		facade.initializer();
-
-		Itinerario teste1 = new Itinerario(209, "JD. UIRA / JOSE LONGO");
-		Itinerario teste2 = new Itinerario(209, "TERMINAL CENTRAL / JD. UIRA");
-
-		facade.buscarItinerario(teste1);
-		facade.buscarItinerario(teste2);
-
-		facade.deletarItinerario(teste1);
+		try {
+			facade.testeAjax();
+			facade.getZona();
+			facade.getLinha();
+			facade.getSentido();
+			//facade.getItinerario();
+			facade.deletarRotaPorZona();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

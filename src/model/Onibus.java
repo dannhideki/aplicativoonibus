@@ -1,13 +1,17 @@
 package model;
 
+import enumerators.Zona;
+
 public class Onibus {
 
 	private String nomeLinha;
 	private Itinerario itinerario;
+	private Zona zona;
 
-	public Onibus(String nomeLinha, Itinerario itinerario) {
+	public Onibus(String nomeLinha,Zona zona, Itinerario itinerario) {
 		this.nomeLinha = nomeLinha;
 		this.itinerario = itinerario;
+		this.zona = zona;
 	}
 
 	public String getNomeLinha() {
@@ -26,9 +30,16 @@ public class Onibus {
 		this.itinerario = itinerario;
 	}
 
-	@Override
-	public String toString() {
-		return "Onibus [ Linha=" + nomeLinha + ", " + itinerario + " ]";
+	public Zona getZona() {
+		return zona;
 	}
 
+	public void setZona(Zona zona) {
+		this.zona = zona;
+	}
+
+	@Override
+	public String toString() {
+		return "Onibus [ Linha=" + nomeLinha + ", Zona = "+zona +" , "+ itinerario + " ]";
+	}
 }

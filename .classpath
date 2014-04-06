@@ -2,6 +2,14 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="/Users/danielhidekicassi/Documents/Fatec/3o Semestre/Lab III/Projeto Onibus/aplicativoonibus/db4o-8.0.249.16098-all-java5.jar"/>
+	<classpathentry kind="lib" path="/Users/danielhidekicassi/Documents/Fatec/3o Semestre/Lab III/Projeto Onibus/libs/db4o-8.0.249.16098-all-java5.jar"/>
+	<classpathentry kind="lib" path="/Users/danielhidekicassi/Documents/Fatec/3o Semestre/Lab III/Projeto Onibus/libs/jetty-6.0.0beta6.jar"/>
+	<classpathentry kind="lib" path="/Users/danielhidekicassi/Documents/Fatec/3o Semestre/Lab III/Projeto Onibus/libs/log4j-1.2.14.jar"/>
+	<classpathentry kind="lib" path="/Users/danielhidekicassi/Documents/Fatec/3o Semestre/Lab III/Projeto Onibus/libs/servlet-api-3.0.pre4.jar"/>
+	<classpathentry kind="lib" path="/Users/danielhidekicassi/Documents/Fatec/3o Semestre/Lab III/Projeto Onibus/libs/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="/Users/danielhidekicassi/Documents/Fatec/3o Semestre/Lab III/Projeto Onibus/libs/slf4j-log4j12-1.6.1.jar"/>
+	<classpathentry kind="lib" path="/Users/danielhidekicassi/Documents/Fatec/3o Semestre/Lab III/Exercicio 4/Bibs/org.json-20120521.jar"/>
+	<classpathentry kind="lib" path="/Users/danielhidekicassi/Documents/Fatec/3o Semestre/Lab III/Exercicio 4/Bibs/google-gson-2.2.4/gson-2.2.4.jar"/>
+	<classpathentry kind="lib" path="/Users/danielhidekicassi/Documents/Fatec/3o Semestre/Lab III/Exercicio 4/Bibs/spark-0.9.9-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -9,6 +9,9 @@ public class Itinerario {
 	private int numeroLinha;
 	private String sentido;
 
+	public Itinerario(){
+	}
+	
 	public Itinerario(int numeroLinha, String sentido) {
 		ruas = new ArrayList<String>();
 		this.numeroLinha = numeroLinha;
