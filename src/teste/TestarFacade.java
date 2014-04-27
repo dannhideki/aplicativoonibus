@@ -11,11 +11,9 @@ public class TestarFacade {
 		Facade facade = new Facade();
 		facade.initializer();
 		try {
-			facade.testeAjax();
+			facade.testePost();
 			facade.getZona();
 			facade.getLinha();
-			facade.getSentido();
-			//facade.getItinerario();
 			facade.deletarRotaPorZona();
 		} catch (JSONException e) {
 			e.printStackTrace();

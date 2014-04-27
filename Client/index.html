@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="US-ASCII">
+<title>Pegando do Spark Json</title>
+<!-- Bootstrap -->
+
+<link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+<link href="css/bootstrap.css" rel="stylesheet" media="screen">
+
+<script src="js/jquery-1.11.0.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+<style>
+  
+</style>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	var urlPost = "http://localhost:8000/onibus/modopost/sentido/";
+	var url = "";
+	
+	
+	//Para limpar os campos de busca
+	$(".text-input").on("focus", function(){
+        $(".text-input").val("");
+    });
+	
+	//Seta o tipo de busca ao selecionar
+	$("input:radio").change(function(){
+			$("#btnGet").removeAttr("disabled");
+		   var radioValue = $(this).val();
+		   if(radioValue == 'linha'){
+	        	url = "http://localhost:8000/onibus/linha/";
+	        }
+	        else if(radioValue == 'zona'){
+	        	url = "http://localhost:8000/onibus/zona/";
+	        }else{
+	        	url = "http://localhost:8000/onibus/deletar/linha/";
+	        }
+		   
+		   $("#inputGet").focus();
+		});
+	 
+	
+	$("#btnGet").click(function() {
+		var input = $("#inputGet").val();
+		$.ajax({
+			url: url+input,
+			success: function(data) {
+				var items = [];
+				
+				$.each( data, function( key, val ) {
+				    items.push( "<li id='" + key + "' class='breadcrumb'>" + JSON.stringify(val) + "</li></br>" );
+				});
+				$('#result').html("<div class=\"page-header\"><h1 class='alert alert-success'><small>Resultado da busca</small></h1></div>");
+				$('#result').append(items.join( "" ));
+			}
+		});
+		return false;
+	});
+	
+/*		
+	//Metodo alternativo para obter com jqxhr ....funfando
+	var jqxhr = $.ajax( url )
+		  .done(function( data, textStatus, jqXHR ) {
+		    var items = [];
+			$.each( data, function( key, val ) {
+			    items.push( "<li id='" + key + "'>" + JSON.stringify(val) + "</li></br>" );
+			  });
+			 
+			$( "<ul/>", {
+			  "id": "photoList",
+			  html: items.join( "" )
+			}).appendTo( "body" );
+		    
+		  })
+		  .fail(function() {
+		    alert( "error" );
+		  })
+		  .always(function() {
+		    alert( "complete" );
+	  	});
+*/
+
+	// $.post
+	$('#sentido_error').hide();
+	$("#submit_btn").click(function() {
+		var sentido = $("#sentido").val();
+		var dataString = 'sentido='+ sentido;
+	 
+		var sentido = $("#sentido").val();
+		if (sentido == "") {
+			$("#sentido_error").show();
+			$("#sentido").focus();
+			return false;
+		}
+		$.ajax({
+			type: "POST",
+			url: urlPost,
+			data: dataString,
+			success: function(data) {
+				var items = [];
+				
+				$.each( data, function( key, val ) {
+				    items.push( "<li id='" + key + "' class='breadcrumb'>" + JSON.stringify(val) + "</li></br>" );
+				});
+				$('#resultPost').html("<div class=\"page-header\"><h1 class='alert alert-success'><small>Resultado da busca</small></h1></div>");
+				$('#resultPost').append(items.join( "" ));
+				
+			}
+		});
+		return false;
+	});
+
+});// fim do documento ready
+
+</script>
+
+</head>
+<body>
+	<div class="container">
+		<h1 align="center">Aplicativo Onibus</h1>
+		<ul id="myTab" class="nav nav-tabs">
+			<li class="active">
+				<a href="#post" data-toggle="tab">POST</a>
+			</li>
+			<li>
+				<a href="#get" data-toggle="tab">GET</a>
+			</li>
+		</ul>
+		
+		<div id="myTabContent" class="tab-content">
+
+			<div class="tab-pane fade in active" id="post">
+				<h2>Arquivo Json do Itinerario do Onibus com Spark.post</h2>
+				<div id="contact_form">
+					<form name="contact" class="form-search">
+						<fieldset>
+							<label class="alert alert-danger" for="sentido" id="sentido_error">This field is required.</label> 
+							<input type="text" name="sentido" id="sentido" size="30" value="" class="text-input" placeholder="Insira o sentido" /> 
+							<input type="submit" name="submit" class="btn" id="submit_btn" value="Buscar" />
+						</fieldset>
+					</form>
+				</div>
+				<div id="resultPost"></div>
+			</div>
+
+			<div class="tab-pane fade" id="get">
+				<h2 class='alert alert-info'>Arquivo Json do Itinerario do Onibus da zona leste de SJC com Spark.get</h2>
+				<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h3 class="panel-title">Selecione um tipo busca:</h3>
+				  </div>
+				  <div class="panel-body">
+				  	<form id="formPost" class="form-search">
+						<div id="btngroup" class="btn-group" data-toggle="buttons">
+							  <label class="btn btn-primary">
+							    <input type="radio" name="options" value="linha"> Linha
+							  </label>
+							  <label class="btn btn-primary">
+							    <input type="radio" name="options" id="option2" value="zona"> Zona
+							  </label>
+							  <label class="btn btn-primary">
+							    <input type="radio" name="options" id="option3" value="delete"> Deletar Linha
+							  </label>
+							</div>
+
+						<div class="control-group" style="margin-top: 25px;">
+							<div class="controls">
+								<input class="text-input" id="inputGet" type="text" placeholder="Digite sua rota" />
+								<button id="btnGet" class="btn" disabled="disabled">Buscar</button>
+							</div>
+						</div>
+						</form>
+						<div id="result"></div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</body>
+</html>

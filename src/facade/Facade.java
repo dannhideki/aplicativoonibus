@@ -15,6 +15,7 @@ import org.json.JSONObject;
 import spark.Request;
 import spark.Response;
 import spark.Route;
+import spark.Spark;
 
 import com.db4o.ObjectSet;
 
@@ -56,9 +57,45 @@ public class Facade {
 		String rua3 = "TERMINAL CENTRAL – AV. SAO JOSE – AV. MADRE THEREZA – RUA LUIZ JACINTO – PRACA ROTARY – RUA EUCLIDES MIRAGAIA – PRACA DR. MANOEL DE ABREU – AV. DR. ADHEMAR DE BARROS – RUA ENG. PRUDENTE MEIRELES DE MORAIS – AV. SAO JOAO – AV. MAJOR MIGUEL NAKED – AV. DR. EDUARDO CURY – BAIA DA AV. DR. JORGE ZARUR – AV. DR. JORGE ZARUR – AV. FLORESTAN FERNANDES (ANEL VIARIO) – ALCA DE ACESSO AO VIADUTO KANEBO - AV. DR. SEBASTIAO HENRIQUE DA CUNHA PONTES - AV. ANDROMEDA – AV. CIDADE JARDIM – AV. ADILSON JOSE DA CRUZ – AV. LENIN – AV. ANGELO BELMIRO PINTUS – RUA SIMIAO FERREIRA DA MATA (R.52) – RUA MALVINA BARBOSA DE ARAUJO (R.55) – AV. PADRE WILSON CUNHA – AV. DOS EVANGELICOS – RUA JOSE LUIS DE SIQUEIRA (R. 77) – AV. ADONIAS DA SILVA – ROTATORIA AV. DOS EVANGELICOS) – AV. ADONIAS DA SILVA – ROTATORIA AV. MARIA DE LOURDES MEDEIROS DE ASSIS – AV. ADONIAS DA SILVA (PONTO FINAL EM FRENTE AO NUMERO 831)";
 		terminalCampoAlemaesItiner.inserirRuas(rua3);
 		onibusDAO.salvarBus(terminalCampo);
-
+		
 		onibus = onibusDAO.buscarTodosItinerarios();
 
+	}
+	
+	public void testePost() {
+		Spark.post(new Route("/onibus/modopost/sentido/") {
+            @Override
+            public Object handle(Request request, Response response) {
+            	response.header("Content-Type", "text/json; charset=UTF-8");
+            	response.header("Access-Control-Allow-Origin", "*");
+                String sentido = request.queryParams("sentido");		
+                
+                JSONArray jsonResult = new JSONArray();
+				JSONObject jsonObj;
+				try {
+					for(Onibus  bus: onibus){
+						if(bus.getItinerario().getSentido().equalsIgnoreCase(sentido)){
+
+							jsonObj = new JSONObject();
+							jsonObj.put("nome da linha", bus.getNomeLinha());
+							jsonObj.put("zona", bus.getZona());
+							jsonObj.put("numero da linha", bus.getItinerario().getNumeroLinha());
+							jsonObj.put("sentido", bus.getItinerario().getSentido());
+							jsonObj.put("ruas", bus.getItinerario().getRuas());
+							jsonResult.put(jsonObj);
+						}
+
+					}
+					response.status(200);
+
+				} catch (JSONException e) {
+					response.status(304);
+					e.printStackTrace();
+				}
+
+				return jsonResult;
+            }
+        });
 	}
 
 	public String buscarItinerario(Itinerario itinerario) {
@@ -75,59 +112,14 @@ public class Facade {
 		return sb.toString();
 	}
 
-	public void getSentido() throws JSONException{
-		get(new Route("/onibus/sentido/:sentido") {
-
-			@Override
-			public Object handle(Request request, Response response) {
-				response.header("Content-Type", "application/json; charset=UTF-8");
-				String sentido = request.params(":sentido");
-				JSONArray jsonResult = new JSONArray();
-				JSONObject jsonObj;
-				try {
-					for(Onibus  bus: onibus){
-						if(bus.getItinerario().getSentido().equalsIgnoreCase(sentido)){
-
-							jsonObj = new JSONObject();
-							jsonObj.put("nome da linha", bus.getNomeLinha());
-							jsonObj.put("zona", bus.getZona());
-							jsonObj.put("numero da linha", bus.getItinerario().getNumeroLinha());
-							jsonObj.put("sentido", bus.getItinerario().getSentido());
-							jsonObj.put("ruas", bus.getItinerario().getRuas());
-							jsonResult.put(jsonObj);
-						}
-
-					}
-
-				} catch (JSONException e) {
-
-					e.printStackTrace();
-				}
-
-				return jsonResult;
-			}
-		});
-	}
-	public void testeAjax() {
-		
-		get(new Route("/") {
-			
-			@Override
-			public Object handle(Request request, Response response) {
-				//response.header("Content-Type", "application/json; charset=UTF-8");
-
-				return "testeAjax";
-			}
-		});
-	}
-
 	public void getLinha() throws JSONException{
 		
 		get(new Route("/onibus/linha/:linha") {
 			
 			@Override
 			public Object handle(Request request, Response response) {
-				response.header("Content-Type", "application/json; charset=UTF-8");
+				response.header("Content-Type", "text/json; charset=UTF-8");
+				response.header("Access-Control-Allow-Origin", "*");
 				int linha = Integer.parseInt(request.params(":linha"));
 				JSONArray jsonResult = new JSONArray();
 				try {
@@ -189,53 +181,32 @@ public class Facade {
 		});
 	}
 
-	// Pensar mais um pouco para fazer, no momento esta com erros para poder buscar uma rua especifica
-//	public void getItinerario() throws JSONException{
-//		get(new Route("/onibus/itinerarios/:rua") {
-//
-//			@Override
-//			public Object handle(Request request, Response response) {
-//				response.header("Content-Type", "application/json; charset=UTF-8");
-//				String nomeRua = request.params(":rua");
-//				JSONArray jsonResult = new JSONArray();
-//
-//				JSONObject jsonObj = new JSONObject();
-//				for(Onibus bus: onibus){
-//					for(String rua: bus.getItinerario().getRuas()){
-//						if(rua.contains(nomeRua.toUpperCase())){
-//							try {
-//								jsonObj.put("nome da linha", bus.getNomeLinha());
-//								jsonObj.put("zona", bus.getZona());
-//								jsonObj.put("numero da linha", bus.getItinerario().getNumeroLinha());
-//								jsonObj.put("sentido", bus.getItinerario().getSentido());
-//								jsonObj.put("ruas", bus.getItinerario().getRuas());
-//								jsonResult.put(jsonObj);
-//							} catch (JSONException e) {
-//
-//								e.printStackTrace();
-//							}
-//							break;
-//						}
-//					}
-//				}
-//				return jsonResult;
-//			}
-//		});
-//	}
-
 	public void deletarRotaPorZona(){
 		get(new Route("/onibus/deletar/linha/:linha") {
 			@Override
 			public Object handle(Request request, Response response) {
+				response.header("Content-Type", "text/json; charset=UTF-8");
+				response.header("Access-Control-Allow-Origin", "*");
 				int linha = Integer.parseInt(request.params(":linha"));
+				JSONArray jsonResult = new JSONArray();
+				JSONObject jsonObj = new JSONObject();
 				for(Onibus bus: onibus){
 					if(bus.getItinerario().getNumeroLinha() == linha){
+						try {
+							jsonObj.put("linha", linha);
+							jsonObj.put("nome da linha", bus.getNomeLinha());
+							jsonObj.put("sentido", bus.getItinerario().getSentido());
+							jsonObj.put("Deleted Success", true);
+							jsonResult.put(jsonObj);
+						} catch (JSONException e) {
+							e.printStackTrace();
+						}
 						onibusDAO.deletarOnibus(linha);
 					}
 				}
-
+				
 				onibus = onibusDAO.buscarTodosItinerarios();
-				return "Onibus da linha '" + linha + "' foi deletado com sucesso!";
+				return jsonResult;
 
 			}
 		});
