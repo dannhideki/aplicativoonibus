@@ -421,21 +421,6 @@
             
             <div id="myTabContent" class="tab-content">
                 
-                <div class="tab-pane fade in active" id="post">
-                    <h2>Arquivo Json do Itinerario do Onibus com Spark.post</h2>
-                    
-                    <div id="contact_form">
-                        <form name="contact" class="form-search">
-                            <fieldset>
-                                <label class="alert alert-danger" for="sentido" id="sentido_error">This field is required.</label>
-                                <input type="text" name="sentido" id="sentido" size="30" value="" class="text-input" placeholder="Insira o sentido" />
-                                <button name="submit" class="btn" id="btnPost" onclick="startVideo()" >Buscar</button>
-                            </fieldset>
-                        </form>
-                    </div>
-                    <div id="resultPost"></div>
-                </div>
-                
                 <div class="tab-pane fade" id="get">
                     <h2 class='alert alert-info'>Arquivo Json do Itinerario do Onibus da zona leste de SJC com Spark.get</h2>
                     <div class="panel panel-default">
@@ -464,7 +449,22 @@
                         </div>
                     </div>
                 </div>
-		</div>
+                
+                <div class="tab-pane fade in active" id="post">
+                    <h2>Arquivo Json do Itinerario do Onibus com Spark.post</h2>
+                    
+                    <div id="contact_form">
+                        <form name="contact" class="form-search">
+                            <fieldset>
+                                <label class="alert alert-danger" for="sentido" id="sentido_error">This field is required.</label>
+                                <input type="text" name="sentido" id="sentido" size="30" value="" class="text-input" placeholder="Insira o sentido" />
+                                <button name="submit" class="btn" id="btnPost" onclick="startVideo()" >Buscar</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div id="resultPost"></div>
+                </div>
+	   </div>
        </div>
 	</body>
 </html>
