@@ -162,7 +162,7 @@
                                       $("#btnPost").click(function() {
                                                           
                                                              var sentido = $("#sentido").val();
-                                                             var dataString = 'sentido='+ sentido;
+                                                             var dataString;
                                                              
                                                              var sentido = $("#sentido").val();
                                                              if (sentido == "") {
@@ -173,7 +173,7 @@
                                                              $.ajax({
                                                                     type: "POST",
                                                                     url: urlPost,
-                                                                    data: dataString,
+                                                                    //data: dataString,
                                                                     success: function(data) {
                                                                     var items = [];
                                                                     
@@ -422,7 +422,7 @@
                 
                 <div class="tab-pane fade in active" id="post">
                     <h2>Arquivo Json do Itinerario do Onibus com Spark.post</h2>
-                    
+                    <label>Necessário o uso de webcam</label>
                     <div id="contact_form">
                         <form name="contact" class="form-search">
                             <fieldset>
