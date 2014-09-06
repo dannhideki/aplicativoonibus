@@ -25,8 +25,8 @@
                     -ms-filter : fliph; /*IE*/
                     filter : fliph; /*IE*/
                     
-                    width : 600px;
-                    height : 450px;
+                   /* width : 600px;
+                    height : 450px;*/
                 }
                 
                 #videoel {
@@ -36,8 +36,8 @@
                     -ms-filter : fliph; /*IE*/
                     filter : fliph; /*IE*/
                     
-                    width : 600px;
-                    height : 450px;
+                    /*width : 600px;
+                    height : 450px;*/
                 }
                 
                 #videocontainer {
@@ -201,9 +201,9 @@
 			<h2>Emotion detection</h2>
 			<p>Detectando suas emoções em tempo real!</p>
 			<div id="videocontainer">
-				<video id="videoel" width="400" height="250" preload="auto" loop>
+				<video id="videoel" width="400" height="300" preload="auto" loop>
 				</video>
-				<canvas id="overlay" width="400" height="250" ></canvas>
+				<canvas id="overlay" width="400" height="300" ></canvas>
 			</div>
 			<canvas id="sketch" width="400" height="250"></canvas>
 			<div id="emotion_container">
@@ -299,7 +299,7 @@
                 overlayCC.clearRect(0, 0, 400, 300);
                 //psrElement.innerHTML = "score :" + ctrack.getScore().toFixed(4);
                 if (ctrack.getCurrentPosition()) {
-                    //ctrack.draw(overlay);
+                    ctrack.draw(overlay);
                 }
                 var cp = ctrack.getCurrentParameters();
                 
