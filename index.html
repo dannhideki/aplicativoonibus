@@ -228,24 +228,24 @@
                     
 					var start = document.getElementById('btnPost');
 					start.value = "Buscar";
-                    var startbutton = document.getElementById('btnGet');
-                    startbutton.value = "Buscar";
+		                    	var startbutton = document.getElementById('btnGet');
+		                    	startbutton.value = "Buscar";
 					//startbutton.disabled = null;
 				}
 				
-	var insertAltVideo = function(video) {
-             if (supports_video()) {
-	             if (supports_ogg_theora_video()) {
-	             	video.src = "http://auduno.github.io/clmtrackr/media/cap12_edit.ogv";
-	             } else if (supports_h264_baseline_video()) {
-             		video.src = "http://auduno.github.io/clmtrackr/media/cap12_edit.mp4";
-        	     } else {
-             		return false;
-             		}
-	             video.play();
-	             return true;
-             } else return false;
-        }
+				var insertAltVideo = function(video) {
+			             if (supports_video()) {
+				             if (supports_ogg_theora_video()) {
+				             	video.src = "http://auduno.github.io/clmtrackr/media/cap12_edit.ogv";
+				             } else if (supports_h264_baseline_video()) {
+			             		video.src = "http://auduno.github.io/clmtrackr/media/cap12_edit.mp4";
+			        	     } else {
+			             		return false;
+			             		}
+				             video.play();
+				             return true;
+			             } else return false;
+			        }
  
             navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
             window.URL = window.URL || window.webkitURL || window.msURL || window.mozURL;
