@@ -6,8 +6,6 @@
             <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
                 <link href="css/bootstrap.css" rel="stylesheet" media="screen">
                 <style>
-                   
-                    
                     body {
                         background-color: #f0f0f0;
                         margin: 0px auto;
@@ -117,8 +115,7 @@
                     $(document).ready(function(){
                                       var urlPost = "http://localhost:8000/onibus/modopost/sentido/";
                                       var url = "";
-                                      
-                                      
+
                                       //Para limpar os campos de busca
                                       $(".text-input").on("focus", function(){
                                                           $(".text-input").val("");
@@ -157,29 +154,6 @@
                                                                 });
                                                          return false;
                                                          });
-                                      
-                                      /*
-                                       //Metodo alternativo para obter com jqxhr ....funfando
-                                       var jqxhr = $.ajax( url )
-                                       .done(function( data, textStatus, jqXHR ) {
-                                       var items = [];
-                                       $.each( data, function( key, val ) {
-                                       items.push( "<li id='" + key + "'>" + JSON.stringify(val) + "</li></br>" );
-                                       });
-                                       
-                                       $( "<ul/>", {
-                                       "id": "photoList",
-                                       html: items.join( "" )
-                                       }).appendTo( "body" );
-                                       
-                                       })
-                                       .fail(function() {
-                                       alert( "error" );
-                                       })
-                                       .always(function() {
-                                       alert( "complete" );
-                                       });
-                                       */
                                       
                                       // $.post
                                       $('#sentido_error').hide();
@@ -239,8 +213,7 @@
                                     </div>
 				<div id='emotion_chart'></div>
 			</div>
-			
-			
+
 			<script>
 				var vid = document.getElementById('videoel');
 				var overlay = document.getElementById('overlay');
@@ -257,22 +230,7 @@
                     startbutton.value = "Buscar";
 					//startbutton.disabled = null;
 				}
-                
-            
-            /*var insertAltVideo = function(video) {
-             if (supports_video()) {
-             if (supports_ogg_theora_video()) {
-             video.src = "../media/cap12_edit.ogv";
-             } else if (supports_h264_baseline_video()) {
-             video.src = "../media/cap12_edit.mp4";
-             } else {
-             return false;
-             }
-             //video.play();
-             return true;
-             } else return false;
-             }*/
-            
+ 
             navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
             window.URL = window.URL || window.webkitURL || window.msURL || window.mozURL;
             
@@ -479,7 +437,6 @@
                                         <input type="radio" name="options" id="option3" value="delete"> Deletar Linha
                                             </label>
                                 </div>
-                                
                                 <div class="control-group" style="margin-top: 25px;">
                                     <div class="controls">
                                         <input class="text-input" id="inputGet" type="text" placeholder="Digite sua rota" />
@@ -491,9 +448,7 @@
                         </div>
                     </div>
                 </div>
-            
 		</div>
        </div>
-        
 	</body>
 </html>
