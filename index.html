@@ -117,7 +117,7 @@
                 
                 <script type="text/javascript">
                     $(document).ready(function(){
-                                      var urlPost = "http://localhost:8000/onibus/modopost/sentido/";
+                                      var urlPost = "https://api.myjson.com/bins/4dpsx";
                                       var url = "";
 
                                       //Para limpar os campos de busca
@@ -130,12 +130,10 @@
                                                               $("#btnGet").removeAttr("disabled");
                                                               var radioValue = $(this).val();
                                                               if(radioValue == 'linha'){
-                                                              url = "http://localhost:8000/onibus/linha/";
+                                                              url = "https://api.myjson.com/bins/32k9t";
                                                               }
                                                               else if(radioValue == 'zona'){
-                                                              url = "http://localhost:8000/onibus/zona/";
-                                                              }else{
-                                                              url = "http://localhost:8000/onibus/deletar/linha/";
+                                                              url = "https://api.myjson.com/bins/34pfl";
                                                               }
                                                               
                                                               $("#inputGet").focus();
@@ -145,7 +143,7 @@
                                       $("#btnGet").click(function() {
                                                          var input = $("#inputGet").val();
                                                          $.ajax({
-                                                                url: url+input,
+                                                                url: url,
                                                                 success: function(data) {
                                                                 var items = [];
                                                                 
@@ -237,17 +235,17 @@
 				
 	var insertAltVideo = function(video) {
              if (supports_video()) {
-             if (supports_ogg_theora_video()) {
-             video.src = "http://auduno.github.io/clmtrackr/media/cap12_edit.ogv";
-             } else if (supports_h264_baseline_video()) {
-             video.src = "http://auduno.github.io/clmtrackr/media/cap12_edit.mp4";
-             } else {
-             return false;
-             }
-             //video.play();
-             return true;
+	             if (supports_ogg_theora_video()) {
+	             	video.src = "http://auduno.github.io/clmtrackr/media/cap12_edit.ogv";
+	             } else if (supports_h264_baseline_video()) {
+             		video.src = "http://auduno.github.io/clmtrackr/media/cap12_edit.mp4";
+        	     } else {
+             		return false;
+             		}
+	             video.play();
+	             return true;
              } else return false;
-             }
+        }
  
             navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
             window.URL = window.URL || window.webkitURL || window.msURL || window.mozURL;
@@ -424,6 +422,7 @@
                 
                 <div class="tab-pane fade in active" id="post">
                     <h2>Arquivo Json do Itinerario do Onibus com Spark.post</h2>
+                    
                     <div id="contact_form">
                         <form name="contact" class="form-search">
                             <fieldset>
