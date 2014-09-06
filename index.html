@@ -1,78 +1,499 @@
 <!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Aplicativoonibus by dannhideki</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
-  </head>
-  <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/dannhideki/aplicativoonibus">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/dannhideki/aplicativoonibus/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/dannhideki/aplicativoonibus/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
-
-    <div class="wrapper">
-
-      <section>
-        <div id="title">
-          <h1>Aplicativoonibus</h1>
-          <p></p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/dannhideki">dannhideki</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
-        </div>
-
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+<html lang="en">
+	<head>
+		<title>Aplicativo Onibus</title>
+		<meta charset="utf-8">
+            <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+                <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+                <style>
+                   
+                    
+                    body {
+                        background-color: #f0f0f0;
+                        margin: 0px auto;
+                        max-width: 1150px;
+                    }
+                
+                #overlay {
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    -o-transform : scaleX(-1);
+                    -webkit-transform : scaleX(-1);
+                    transform : scaleX(-1);
+                    -ms-filter : fliph; /*IE*/
+                    filter : fliph; /*IE*/
+                    
+                    width : 600px;
+                    height : 450px;
+                }
+                
+                #videoel {
+                    -o-transform : scaleX(-1);
+                    -webkit-transform : scaleX(-1);
+                    transform : scaleX(-1);
+                    -ms-filter : fliph; /*IE*/
+                    filter : fliph; /*IE*/
+                    
+                    width : 600px;
+                    height : 450px;
+                }
+                
+                #videocontainer {
+                    position : relative;
+                    width : 370px;
+                    /*margin : 0px auto;*/
+                }
+                
+                #videocontent {
+                    margin-top : 50px;
+                    margin-left : auto;
+                    margin-right : auto;
+                    max-width: 700px;
+                }
+                
+                #sketch, #filter {
+                    display: none;
+                }
+                
+                h2 {
+                    font-weight : 400;
+                }
+                
+                .btn {
+                    font-size: 16px;
+                }
+                
+                #controls {
+                    text-align : center;
+                }
+                
+                #emotion_container {
+                    width: 600px;
+                }
+                
+                #emotion_icons {
+                    height: 50px;
+                    padding-left: 40px;
+                }
+                
+                .emotion_icon {
+                    width : 40px;
+                    height : 40px;
+                    margin-top: 5px;
+                    /*margin-left : 13px;*/
+                    margin-left : 35px;
+                }
+                
+                #emotion_chart, #emotion_icons {
+                    margin: 0 auto;
+                    width : 400px;
+                }
+                
+                #icon1, #icon2, #icon3, #icon4, #icon5, #icon6 {
+                    visibility : hidden;
+                }
+                
+                /* d3 */
+                .bar {
+                    fill : steelblue;
+                    fill-opacity : .9;
+                }
+                
+                    </style>
+                 <!-- clmtrackr libraries -->
+                <script src="js/utils.js"></script>
+                <script src="js/clmtrackr.js"></script>
+                <script src="js/clmtrackr-dev/models/model_pca_20_svm_emotionDetection.js"></script>
+                <script src="js/Stats.js"></script>
+                <script src="js/d3.min.js"></script>
+                <script src="js/emotion_classifier.js"></script>
+                <script src="js/emotionmodel.js"></script>
+                
+                <script src="js/jquery-1.11.0.js"></script>
+                <script src="js/bootstrap.min.js"></script>
+                
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                                      var urlPost = "http://localhost:8000/onibus/modopost/sentido/";
+                                      var url = "";
+                                      
+                                      
+                                      //Para limpar os campos de busca
+                                      $(".text-input").on("focus", function(){
+                                                          $(".text-input").val("");
+                                                          });
+                                      
+                                      //Seta o tipo de busca ao selecionar
+                                      $("input:radio").change(function(){
+                                                              $("#btnGet").removeAttr("disabled");
+                                                              var radioValue = $(this).val();
+                                                              if(radioValue == 'linha'){
+                                                              url = "http://localhost:8000/onibus/linha/";
+                                                              }
+                                                              else if(radioValue == 'zona'){
+                                                              url = "http://localhost:8000/onibus/zona/";
+                                                              }else{
+                                                              url = "http://localhost:8000/onibus/deletar/linha/";
+                                                              }
+                                                              
+                                                              $("#inputGet").focus();
+                                                              });
+                                      
+                                      
+                                      $("#btnGet").click(function() {
+                                                         var input = $("#inputGet").val();
+                                                         $.ajax({
+                                                                url: url+input,
+                                                                success: function(data) {
+                                                                var items = [];
+                                                                
+                                                                $.each( data, function( key, val ) {
+                                                                       items.push( "<li id='" + key + "' class='breadcrumb'>" + JSON.stringify(val) + "</li></br>" );
+                                                                       });
+                                                                $('#result').html("<div class=\"page-header\"><h1 class='alert alert-danger'><small>Resultado da busca</small></h1></div>");
+                                                                $('#result').append(items.join( "" ));
+                                                                }
+                                                                });
+                                                         return false;
+                                                         });
+                                      
+                                      /*
+                                       //Metodo alternativo para obter com jqxhr ....funfando
+                                       var jqxhr = $.ajax( url )
+                                       .done(function( data, textStatus, jqXHR ) {
+                                       var items = [];
+                                       $.each( data, function( key, val ) {
+                                       items.push( "<li id='" + key + "'>" + JSON.stringify(val) + "</li></br>" );
+                                       });
+                                       
+                                       $( "<ul/>", {
+                                       "id": "photoList",
+                                       html: items.join( "" )
+                                       }).appendTo( "body" );
+                                       
+                                       })
+                                       .fail(function() {
+                                       alert( "error" );
+                                       })
+                                       .always(function() {
+                                       alert( "complete" );
+                                       });
+                                       */
+                                      
+                                      // $.post
+                                      $('#sentido_error').hide();
+                                      $("#btnPost").click(function() {
+                                                          
+                                                             var sentido = $("#sentido").val();
+                                                             var dataString = 'sentido='+ sentido;
+                                                             
+                                                             var sentido = $("#sentido").val();
+                                                             if (sentido == "") {
+                                                             $("#sentido_error").show();
+                                                             $("#sentido").focus();
+                                                             return false;
+                                                             }
+                                                             $.ajax({
+                                                                    type: "POST",
+                                                                    url: urlPost,
+                                                                    data: dataString,
+                                                                    success: function(data) {
+                                                                    var items = [];
+                                                                    
+                                                                    $.each( data, function( key, val ) {
+                                                                           items.push( "<li id='" + key + "' class='breadcrumb'>" + JSON.stringify(val) + "</li></br>" );
+                                                                           });
+                                                                    $('#resultPost').html("<div class=\"page-header\"><h1 class='alert alert-success'><small>Resultado da busca</small></h1></div>");
+                                                                    $('#resultPost').append(items.join( "" ));
+                                                                    
+                                                                    }
+                                                                    });
+                                                             return false;
+                                                             });
+                                      
+                                      });// fim do documento ready
+                                      
+                    </script>
+    </head>
+	<body>
+		
+        <div class="container">
+            <h1 align="center">Aplicativo Onibus</h1>
     
-  </body>
+		<div id="videocontent">
+			<h2>Emotion detection</h2>
+			<p>Detectando suas emoções em tempo real!</p>
+			<div id="videocontainer">
+				<video id="videoel" width="400" height="250" preload="auto" loop>
+				</video>
+				<canvas id="overlay" width="400" height="250" ></canvas>
+			</div>
+			<canvas id="sketch" width="400" height="250"></canvas>
+			<div id="emotion_container">
+				<div id="emotion_icons">
+					<img class="emotion_icon" id="icon1" src="img/icon_angry.png">
+                        <img class="emotion_icon" id="icon2" src="img/icon_sad.png">
+                            <img class="emotion_icon" id="icon3" src="img/icon_surprised.png">
+                                <img class="emotion_icon" id="icon4" src="img/icon_happy.png">
+                                    </div>
+				<div id='emotion_chart'></div>
+			</div>
+			
+			
+			<script>
+				var vid = document.getElementById('videoel');
+				var overlay = document.getElementById('overlay');
+				var overlayCC = overlay.getContext('2d');
+				
+				/********** check and set up video/webcam **********/
+                
+                
+				function enableStart() {
+                    
+					var start = document.getElementById('btnPost');
+					start.value = "Buscar";
+                    var startbutton = document.getElementById('btnGet');
+                    startbutton.value = "Buscar";
+					//startbutton.disabled = null;
+				}
+                
+            
+            /*var insertAltVideo = function(video) {
+             if (supports_video()) {
+             if (supports_ogg_theora_video()) {
+             video.src = "../media/cap12_edit.ogv";
+             } else if (supports_h264_baseline_video()) {
+             video.src = "../media/cap12_edit.mp4";
+             } else {
+             return false;
+             }
+             //video.play();
+             return true;
+             } else return false;
+             }*/
+            
+            navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+            window.URL = window.URL || window.webkitURL || window.msURL || window.mozURL;
+            
+            // check for camerasupport
+            if (navigator.getUserMedia) {
+                // set up stream
+                
+                var videoSelector = {video : true};
+                if (window.navigator.appVersion.match(/Chrome\/(.*?) /)) {
+                    var chromeVersion = parseInt(window.navigator.appVersion.match(/Chrome\/(\d+)\./)[1], 10);
+                    if (chromeVersion < 20) {
+                        videoSelector = "video";
+                    }
+                };
+				
+                navigator.getUserMedia(videoSelector, function( stream ) {
+                                       if (vid.mozCaptureStream) {
+                                       vid.mozSrcObject = stream;
+                                       } else {
+                                       vid.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
+                                       }
+                                       vid.play();
+                                       }, function() {
+                                       //insertAltVideo(vid);
+                                       alert("There was some problem trying to fetch video from your webcam. If you have a webcam, please make sure to accept when the browser asks for access to your webcam.");
+                                       });
+            } else {
+                //insertAltVideo(vid);
+                alert("This demo depends on getUserMedia, which your browser does not seem to support. :(");
+            }
+            
+            vid.addEventListener('canplay', enableStart, false);
+            
+            /*********** setup of emotion detection *************/
+            
+            var ctrack = new clm.tracker({useWebGL : true});
+            ctrack.init(pModel);
+            
+            function startVideo() {
+                // start video
+                vid.play();
+                // start tracking
+                ctrack.start(vid);
+                // start loop to draw face
+                drawLoop();
+            }
+            
+            function drawLoop() {
+                requestAnimFrame(drawLoop);
+                overlayCC.clearRect(0, 0, 400, 300);
+                //psrElement.innerHTML = "score :" + ctrack.getScore().toFixed(4);
+                if (ctrack.getCurrentPosition()) {
+                    //ctrack.draw(overlay);
+                }
+                var cp = ctrack.getCurrentParameters();
+                
+                var er = ec.meanPredict(cp);
+                if (er) {
+                    updateData(er);
+                    for (var i = 0;i < er.length;i++) {
+                        if (er[i].value > 0.4) {
+                            document.getElementById('icon'+(i+1)).style.visibility = 'visible';
+                        } else {
+                            document.getElementById('icon'+(i+1)).style.visibility = 'hidden';
+                        }
+                    }
+                }
+            }
+            
+            var ec = new emotionClassifier();
+            ec.init(emotionModel);
+            var emotionData = ec.getBlank();	
+            
+            /************ d3 code for barchart *****************/
+            
+            var margin = {top : 20, right : 20, bottom : 10, left : 40},
+            width = 400 - margin.left - margin.right,
+            height = 100 - margin.top - margin.bottom;
+            
+            var barWidth = 30;
+            
+            var formatPercent = d3.format(".0%");
+            
+            var x = d3.scale.linear()
+            .domain([0, ec.getEmotions().length]).range([margin.left, width+margin.left]);
+            
+            var y = d3.scale.linear()
+            .domain([0,1]).range([0, height]);
+            
+            var svg = d3.select("#emotion_chart").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            
+            svg.selectAll("rect").
+            data(emotionData).
+            enter().
+            append("svg:rect").
+            attr("x", function(datum, index) { return x(index); }).
+            attr("y", function(datum) { return height - y(datum.value); }).
+            attr("height", function(datum) { return y(datum.value); }).
+            attr("width", barWidth).
+            attr("fill", "#2d578b");
+            
+            svg.selectAll("text.labels").
+            data(emotionData).
+            enter().
+            append("svg:text").
+            attr("x", function(datum, index) { return x(index) + barWidth; }).
+            attr("y", function(datum) { return height - y(datum.value); }).
+            attr("dx", -barWidth/2).
+            attr("dy", "1.2em").
+            attr("text-anchor", "middle").
+            text(function(datum) { return datum.value;}).
+            attr("fill", "white").
+            attr("class", "labels");
+            
+            svg.selectAll("text.yAxis").
+            data(emotionData).
+            enter().append("svg:text").
+            attr("x", function(datum, index) { return x(index) + barWidth; }).
+            attr("y", height).
+            attr("dx", -barWidth/2).
+            attr("text-anchor", "middle").
+            attr("style", "font-size: 12").
+            text(function(datum) { return datum.emotion;}).
+            attr("transform", "translate(0, 18)").
+            attr("class", "yAxis");
+            
+            function updateData(data) {
+                // update
+                var rects = svg.selectAll("rect")
+                .data(data)
+                .attr("y", function(datum) { return height - y(datum.value); })
+                .attr("height", function(datum) { return y(datum.value); });
+                var texts = svg.selectAll("text.labels")
+                .data(data)
+                .attr("y", function(datum) { return height - y(datum.value); })
+                .text(function(datum) { return datum.value.toFixed(1);});
+                
+                // enter 
+                rects.enter().append("svg:rect");
+                texts.enter().append("svg:text");
+                
+                // exit
+                rects.exit().remove();
+                texts.exit().remove();
+            }
+            
+            /******** stats ********/
+            
+            stats = new Stats();
+            stats.domElement.style.position = 'absolute';
+            stats.domElement.style.top = '0px';
+            document.getElementById('container').appendChild( stats.domElement );
+            
+            // update stats on every iteration
+            document.addEventListener('clmtrackrIteration', function(event) {
+                                      stats.update();
+                                      }, false);
+                                      
+                </script>
+            
+            <ul id="myTab" class="nav nav-tabs">
+                <li class="active">
+                    <a href="#post" data-toggle="tab">POST</a>
+                </li>
+                <li>
+                    <a href="#get" data-toggle="tab">GET</a>
+                </li>
+            </ul>
+            
+            <div id="myTabContent" class="tab-content">
+                
+                <div class="tab-pane fade in active" id="post">
+                    <h2>Arquivo Json do Itinerario do Onibus com Spark.post</h2>
+                    <div id="contact_form">
+                        <form name="contact" class="form-search">
+                            <fieldset>
+                                <label class="alert alert-danger" for="sentido" id="sentido_error">This field is required.</label>
+                                <input type="text" name="sentido" id="sentido" size="30" value="" class="text-input" placeholder="Insira o sentido" />
+                                <button name="submit" class="btn" id="btnPost" onclick="startVideo()" >Buscar</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div id="resultPost"></div>
+                </div>
+                
+                <div class="tab-pane fade" id="get">
+                    <h2 class='alert alert-info'>Arquivo Json do Itinerario do Onibus da zona leste de SJC com Spark.get</h2>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Selecione um tipo busca:</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form id="formPost" class="form-search">
+                                <div id="btngroup" class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-primary">
+                                        <input type="radio" name="options" value="linha"> Linha
+                                            </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" name="options" id="option2" value="zona"> Zona
+                                            </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" name="options" id="option3" value="delete"> Deletar Linha
+                                            </label>
+                                </div>
+                                
+                                <div class="control-group" style="margin-top: 25px;">
+                                    <div class="controls">
+                                        <input class="text-input" id="inputGet" type="text" placeholder="Digite sua rota" />
+                                        <button id="btnGet" class="btn" disabled="disabled" onclick="startVideo()">Buscar</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div id="result"></div>
+                        </div>
+                    </div>
+                </div>
+            
+		</div>
+       </div>
+        
+	</body>
 </html>
