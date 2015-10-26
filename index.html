@@ -198,14 +198,14 @@
             var ctrack = new clm.tracker({useWebGL : true});
             ctrack.init(pModel);
             
-            //function startVideo() {
+            function startVideo() {
                 // start video
                 vid.play();
                 // start tracking
                 ctrack.start(vid);
                 // start loop to draw face
                 drawLoop();
-            //}
+            }
             
             function drawLoop() {
                 requestAnimFrame(drawLoop);
@@ -319,6 +319,12 @@
             document.addEventListener('clmtrackrIteration', function(event) {
                                       stats.update();
                                       }, false);
+                                      
+		window.onload = function() {
+		  setTimeout(function() {
+		    startVideo();
+		  }, 1000);
+		};                                      
                 </script>
             
             <ul id="myTab" class="nav nav-tabs">
