@@ -117,9 +117,13 @@
 		
                 <script type="text/javascript">
                     $(document).ready(function(){
-			  setTimeout(function() {
-			    startVideo();
-			  }, 1000);
+                    	var par = $('#result');
+  			$(par).hide();
+  			
+			  $('#button').click(function(e) {
+			      $(par).slideToggle('slow');
+			      e.preventDefault();
+			  });
                     });
                                       
                 </script>
@@ -342,9 +346,9 @@
                 <div class="tab-pane fade in active" id="get">
                     <h2 class='alert alert-info'>Material da aula</h2>
                     <div class="panel panel-default">
-                        
+                        <button>Ver detalhes</button>
                         <div class="panel-body">
-                            <div id="result">
+                            <div id="result" style="display:none">
                             	<p><strong>O que é o curso?</strong><br>
 				A Engenharia de Software é uma área do conhecimento da informática voltada a especificação, desenvolvimento e manutenção de sistemas de software aplicando tecnologias e práticas de ciência da computação, gerência de projetos e outras disciplinas, objetivando organização, produtividade e qualidade.<br>
 				<br>
