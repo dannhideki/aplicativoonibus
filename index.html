@@ -150,14 +150,14 @@
 				/********** check and set up video/webcam **********/
                 
                 
-				function enableStart() {
+				/*function enableStart() {
                     
 					var start = document.getElementById('btnPost');
 					start.value = "Buscar";
 		                    	var startbutton = document.getElementById('btnGet');
 		                    	startbutton.value = "Buscar";
 					//startbutton.disabled = null;
-				}
+				}*/
 				
  
             navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
@@ -198,14 +198,14 @@
             var ctrack = new clm.tracker({useWebGL : true});
             ctrack.init(pModel);
             
-            function startVideo() {
+            //function startVideo() {
                 // start video
                 vid.play();
                 // start tracking
                 ctrack.start(vid);
                 // start loop to draw face
                 drawLoop();
-            }
+            //}
             
             function drawLoop() {
                 requestAnimFrame(drawLoop);
@@ -320,12 +320,12 @@
                                       stats.update();
                                       }, false);
                                      
-                            startVideo();          
+             startVideo();          
                 </script>
             
             <ul id="myTab" class="nav nav-tabs">
                 <li  class="active">
-                    <a href="#get" data-toggle="tab">GET</a>
+                    <a href="#get" data-toggle="tab">Engenharia de Software</a>
                 </li>
             </ul>
             
@@ -336,7 +336,6 @@
                     <div class="panel panel-default">
                         
                         <div class="panel-body">
-                            <p>Engenharia de Software</p>
                             <div id="result">
                             	<p><strong>O que é o curso?</strong><br>
 				A Engenharia de Software é uma área do conhecimento da informática voltada a especificação, desenvolvimento e manutenção de sistemas de software aplicando tecnologias e práticas de ciência da computação, gerência de projetos e outras disciplinas, objetivando organização, produtividade e qualidade.<br>
