@@ -116,16 +116,13 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		
                 <script type="text/javascript">
-                    $(document).ready(function(){
-                    	var par = $('#result');
-  			$(par).hide();
-  			
-			  $('#button').click(function(e) {
-			      $(par).slideToggle('slow');
-			      e.preventDefault();
-			  });
-                    });
-                                      
+                	$(function() {
+			         $('button#verDetalhes').click(function() {
+			            $('div#result').toggle();
+			            return false;
+			         });
+			 }); 
+                
                 </script>
                 
     </head>
@@ -162,14 +159,12 @@
 				/********** check and set up video/webcam **********/
                 
                 
-				/*function enableStart() {
+				function enableStart() {
                     
-					var start = document.getElementById('btnPost');
-					start.value = "Buscar";
-		                    	var startbutton = document.getElementById('btnGet');
-		                    	startbutton.value = "Buscar";
+					var start = document.getElementById('verDetalhes');
+					start.value = "Ver detalhes";
 					//startbutton.disabled = null;
-				}*/
+				}
 				
  
             navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
@@ -346,7 +341,7 @@
                 <div class="tab-pane fade in active" id="get">
                     <h2 class='alert alert-info'>Material da aula</h2>
                     <div class="panel panel-default">
-                        <button onclick="startVideo()">Ver detalhes</button>
+                        <button id="verDetalhes" onclick="startVideo()">Ver detalhes</button>
                         <div class="panel-body">
                             <div id="result" style="display:none">
                             	<p><strong>O que é o curso?</strong><br>
